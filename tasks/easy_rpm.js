@@ -245,6 +245,15 @@ module.exports = function(grunt) {
         // the top level of the build is.
         spec.addDefines('_topdir ' + tmpDir);
 
+        // If there are more defines are specified, we add them here
+        if (options.defines) {
+            for (i in options.defines) {
+                if (options.defines.hasOwnProperty(i)) {
+                    spec.addDefines(i + " " + options.defines[i]);
+                }
+            }
+        }
+
         // Assign the options to the spec file object.
         applySpecSettings(grunt, options, spec);
 
